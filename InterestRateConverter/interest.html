@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width: device-width, initial-scale=1">
+    <title>Precise Interest</title>
+
+    <!-- Bulma CSS framework  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+
+    <!-- Fonts -->
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,500" rel="stylesheet">
+
+    <!-- CSS stylesheet -->
+
+    <link rel="stylesheet" type="text/css" href="inStyle.css">
+
+    <!-- Vue.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+    <!-- Font-Awesome icons -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <!-- MathJax -->
+
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+</head>
+
+<!-- Auto format code - cntrl alt L
+
+<i class="fas fa-question-circle"></i>  QUESTION ICON
+
+
+-->
+
+
+<body>
+
+<div id="container">
+
+    <div id="interest">
+
+        <div style="display: flex; justify-content: space-between">
+
+
+            <div id="top">
+                <h1 id="header">Precise interest.</h1>
+                <div class="underline"></div>
+            </div>
+
+        </div>
+
+        <div id="formula">
+
+            <p style="color: lightskyblue; font-size: 2em;">
+                `(1+r_x)^(p_x*(1/p_Delta))-1`</p>
+
+        </div>
+
+        <div id="controls">
+
+            <div id="control_field">
+
+                <p class="field-text">interest rate</p>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-info" type="number" placeholder="interest-rate" v-model="r">
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="control_field">
+
+                <p class="field-text">compounding period</p>
+
+                <div class="field">
+                    <div class="select is-info">
+                        <select @change="period; c_calc() " v-model="p">
+                            <option>annually</option>
+                            <option>semi-annually</option>
+                            <option>quarterly</option>
+                            <option>monthly</option>
+                            <option>weekly</option>
+                            <option>daily</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="button">
+                <button class="button is-outlined" @click="c_calc">FIAT LUX</button>
+            </div>
+
+        </div>
+
+        <!-- Style of underline is inline-css because otherwise it did not show -->
+
+
+        <div id="results">
+
+            <div class="result_column">
+                <p class="result_period">annually</p>
+                <div style="background-color: lightskyblue; width: 4em; height: 0.1em; margin-top: -0.5em;"></div>
+                <h4 class="result_value">{{annually}}</h4>
+            </div>
+
+            <div class="result_column">
+
+                <p class="result_period">semi-annually</p>
+                <div style="background-color: lightskyblue; width: 6em; height: 0.1em; margin-top: -0.5em;"></div>
+                <h4 class="result_value">{{semi_annually}}</h4>
+            </div>
+
+
+            <div class=" result_column">
+                <p class="result_period">quarterly</p>
+                <div style="background-color: lightskyblue; width: 4em; height: 0.1em; margin-top: -0.5em;"></div>
+                <h4 class="result_value">{{quarterly}}</h4>
+            </div>
+
+            <div class=" result_column">
+                <p class="result_period">monthly</p>
+                <div style="background-color: lightskyblue; width: 4em; height: 0.1em; margin-top: -0.5em;"></div>
+                <h4 class="result_value">{{monthly}}</h4>
+            </div>
+
+            <div class=" result_column">
+                <p class="result_period">weekly</p>
+                <div style="background-color: lightskyblue; width: 4em; height: 0.1em; margin-top: -0.5em;"></div>
+                <h4 class="result_value">{{weekly}}</h4>
+            </div>
+
+            <div class=" result_column">
+                <p class="result_period">daily</p>
+                <div style="background-color: lightskyblue; width: 3em; height: 0.1em; margin-top: -0.5em;"></div>
+                <h4 class="result_value">{{daily}}</h4>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<script type=" text/javascript" src="inCalc.js"></script>
+
+</body>
+
+
